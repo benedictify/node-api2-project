@@ -2,8 +2,6 @@ const express = require('express')
 const Posts = require('./posts-model')
 const router = express.Router()
 
-// url prefix for all posts routes: /api/posts
-// get all: get /
 router.get('/', (request, response) => {
 	Posts.find()
 		.then(posts => {
@@ -17,7 +15,6 @@ router.get('/', (request, response) => {
 		})
 })
 
-// get one: get /:id
 router.get('/:id', (request, response) => {
 	Posts.findById(request.params.id)
 		.then(post => {
@@ -32,7 +29,6 @@ router.get('/:id', (request, response) => {
 		})
 })
 
-// add new: post /
 router.post('/', (request, response) => {
 	Posts.insert(request.body)
 		.then(post => {
@@ -47,6 +43,15 @@ router.post('/', (request, response) => {
 					message: "There was an error while saving the post to the database"
 				})
 			}
+		})
+})
+
+router.put('/:id', (request, response) => {
+	const changes = request.body;
+	
+	Posts.update(request.params.id, changes)
+		.then(post => {
+			if 
 		})
 })
 
