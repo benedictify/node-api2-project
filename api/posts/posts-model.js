@@ -11,7 +11,6 @@ module.exports = {
   insertComment,
 };
 
-// this doesn't need any input, it just returns all the posts
 function find() { 
   return db('posts');
 }
